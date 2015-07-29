@@ -3,7 +3,9 @@ var x = document.getElementById("demo");
 function getLocation(){
 	if (navigator.geolocation){
 		//according to the result
-		navigator.geolocation.getCurrentPosition(showPosition,showError);
+		//navigator.geolocation.getCurrentPosition(showPosition,showError);
+		//返回用户的当前位置，并继续返回用户移动时的更新位置
+		navigator.geolocation.watchPosition(showPosition);
 	}else{
 		x.innerHTML="Geolocation is not supported by this browser";
 	}
@@ -11,6 +13,7 @@ function getLocation(){
 
 //unfind var is due to googlemap api
 function showPosition(position) {
+	speed  = position.coords.speed;
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
 	latlon = new google.maps.LatLng(lat,lon);
@@ -30,6 +33,16 @@ function showPosition(position) {
 		position:latlon,map:map,title:"FiterFiter",
 		animation:google.maps.Animation.BOUNCE//use animations
 		});
+		
+	//add a info window
+	var contentString = '<div id="content">'+'<p>Your <b>Speed</b>is :</p>'+speed+'</div>';
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString,
+		maxWidth:200
+	});
+	google.maps.event.addListener(marker,'click',function(){
+		infowindow.open(map,marker);
+	});
 }
 
 ////////////////////////////
