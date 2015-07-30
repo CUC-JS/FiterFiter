@@ -1,5 +1,7 @@
 //get position
 var x = document.getElementById("demo");
+var oldLatlon;
+var pathCoordinates = new Array();
 function getLocation(){
 	if (navigator.geolocation){
 		//according to the result
@@ -13,16 +15,19 @@ function getLocation(){
 
 //unfind var is due to googlemap api
 function showPosition(position) {
-	speed  = position.coords.speed;
-	lat = position.coords.latitude;
-	lon = position.coords.longitude;
-	latlon = new google.maps.LatLng(lat,lon);
-	mapholder = document.getElementById('mapholder');
+	//var len = pathCoordinates.length;
+	
+	var direction = position.coords.heading;
+	var speed  = position.coords.speed;
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	var latlon = new google.maps.LatLng(lat,lon);
+	var mapholder = document.getElementById('mapholder');
 	mapholder.style.height = '250px';
 	mapholder.style.width  = '500px';
 	
 	var myOptions={
-		center:latlon,zoom:14,
+		center:latlon,zoom:16,
 		mapTypeId:google.maps.MapTypeId.ROADMAP,
 		mapTypeControl:false,
 		navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
@@ -35,7 +40,7 @@ function showPosition(position) {
 		});
 		
 	//add a info window
-	var contentString = '<div id="content">'+'<p>Your <b>Speed</b>is :</p>'+speed+'</div>';
+	var contentString = '<div id="content">'+'<p>Your <b>Speed</b>is :</p>'+speed+'<p><b>Direction</b>is :</p>'+direction+'</div>';
 	var infowindow = new google.maps.InfoWindow({
 		content: contentString,
 		maxWidth:200
@@ -43,6 +48,23 @@ function showPosition(position) {
 	google.maps.event.addListener(marker,'click',function(){
 		infowindow.open(map,marker);
 	});
+	
+	//draw pathline in map
+	console.log(latlon);
+	//if(oldLatlon==latlon){console.log("Pause");}
+	
+	//可以根据坐标是否相同，自动暂停
+	pathCoordinates = pathCoordinates.concat(latlon);
+	var flightPath = new google.maps.Polyline({
+    path: pathCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  	});
+
+ 	flightPath.setMap(map);
+	//oldLatlon = latlon;
 }
 
 ////////////////////////////
