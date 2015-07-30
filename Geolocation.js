@@ -1,6 +1,6 @@
 //get position
 var x = document.getElementById("demo");
-var oldLatlon;
+//var oldLatlon = new google.maps.LatLng(0, 0);
 var pathCoordinates = new Array();
 function getLocation(){
 	if (navigator.geolocation){
@@ -50,18 +50,21 @@ function showPosition(position) {
 	});
 	
 	//draw pathline in map
-	console.log(latlon);
-	//if(oldLatlon==latlon){console.log("Pause");}
-	
-	//可以根据坐标是否相同，自动暂停
-	pathCoordinates = pathCoordinates.concat(latlon);
-	var flightPath = new google.maps.Polyline({
-    path: pathCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  	});
+	// console.log(latlon);
+	// if(latlon === oldLatlon){
+	// 	console.log("Pause"+oldLatlon);
+	// 	}else{
+	// 		oldLatlon = latlon;
+	// 		//可以根据坐标是否相同，自动暂停
+			pathCoordinates = pathCoordinates.concat(latlon);
+			var flightPath = new google.maps.Polyline({
+		    path: pathCoordinates,
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+		  	});
+	// 	}
 
  	flightPath.setMap(map);
 	//oldLatlon = latlon;
