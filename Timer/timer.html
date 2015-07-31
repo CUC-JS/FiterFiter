@@ -6,7 +6,7 @@
 <script language="javascript">
 var se,m=0,h=0,s=0,ss=1;
 function second(){
-if((ss%100)==0){s+=1;ss=1;}
+if((ss%1000)==0){s+=1;ss=1;}
 if(s>0 && (s%60)==0){m+=1;s=0;}
 if(m>0 && (m%60)==0){h+=1;m=0;}
 t=h+"时"+m+"分"+s+"秒"+ss+"毫秒";
