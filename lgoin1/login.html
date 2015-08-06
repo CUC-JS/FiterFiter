@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Login Page1</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="stylesheet" href="assets/css/amazeui.css"/>
+  <style>
+      .header {
+          text-align: center;
+      }
+  .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+  }
+  .header p {
+      font-size: 14px;
+  }
+a:link    {color:none;text-decoration:none;}
+a:hover   {color:#85d5d2;text-decoration:underline;}
+  </style>
+</head>
+<!--Google+-->
+<script type="text/javascript" src="google+.js"></script>
+<script type="text/javascript" src="facebook.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '127552444252469',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<body style="background-color:#282828;">
+<div class="header">
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <center>
+    <img style="width:110px;height:98px; margin-top:40px;" src="img/touxiang.png"/>
+    </center>
+    <div class="am-btn-group">
+    </div>
+    <br>
+    <br>
+
+    <form method="post" class="am-form" style="margin-top:-40px;">
+      <div class="username" style="padding-left:5%;">
+      <img style="width:35px;height:30px;  display:inline;" src="img/username.png"/>
+      <input  style="color:#fff; border:0px;background-color:#282828; color:#fff; display:inline; width:80%;height:30px;"  type="text" placeholder="Username" name="frame"/>
+      <hr style="border:solid 1px gray;opacity:0.2;">
+      </div>
+      <br>
+      <div class="username" style="padding-left:5%;">
+      <img style="width:35px;height:30px;  display:inline;" src="img/password.png"/>
+      <input  style="color:#fff; border:0px;background-color:#282828; color:#fff; display:inline; width:80%;height:30px;"  type="password" placeholder="Password" name="frame"/>
+      <hr style="border:solid 1px gray;opacity:0.2;">
+    </div>
+      <br>
+      </div>
+      <center>
+    <div>
+      <button id="pinkButton1" style="color:#ffffff;width:300px;height:50px; background-color: #82d5d2;border-radius:10px;"><a href="../cebian/cebianlan.html" style="text-decoration:none; color:#fff;font-size:18px;">Log in</a></button>
+    <div>
+    <p style="font-size:15px;display:inline;"><a href="../lgoin2/login.html" style="text-decoration:underline; color:#82d5d2;">Sign in</a></p>
+    <p style="font-size:15px;padding-left:25%; display:inline;"><a href="http://www.baidu.com" style="text-decoration:none; color:#6a6565;">Forget the password?</a></p>
+    </div>
+   </div>
+   </center>
+
+     <span id="signinButton" style="margin-left: 70px; margin-top: 30px; float:left; ">
+      <span
+              class="g-signin"
+              data-callback="signinCallback"
+              data-clientid="341463421480-2ebqlvm4e9pvpnpggbjqu6tfa0lfs73b.apps.googleusercontent.com"
+              data-cookiepolicy="single_host_origin"
+              data-requestvisibleactions="http://schemas.google.com/AddActivity"
+              data-scope="https://www.googleapis.com/auth/plus.login"
+              >
+      </span>
+    </span>
+    <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false" data-auto-logout-link="false" style="margin-left: 40px;margin-top: 30px;float:left;"></div>
+    <!--<a href="../lgoin2/login.html"><img  style="margin-top:10%; width:80px;height:80px;" src="img/facebook.png"/></a>
+    <a href="../lgoin2/login.html"><img  style="margin-top:10%; width:82px;height:73px;"  src="img/twitter.png"/></a>
+    <a href="../lgoin2/login.html"><img  style="margin-top:10%; width:90px;height:73px;"  src="img/wechat.png"/></a>-->
+   
+    </form>
+</body>
+</html>
